@@ -1,0 +1,141 @@
+body {
+    margin: 0;
+    font-family: sans-serif;
+    background-color: #18e4;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+nav,header,main,aside,footer{
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: #FFF;
+}
+nav,aside,main{
+    border-radius: .6rem;
+}
+
+body,div{
+    box-sizing: border-box;
+    
+
+}
+/*aplicando grid*/
+.grid{
+flex-grow: 1;
+display: grid;
+grid-template-columns: minmax(200px,1fr) minmax(700px,1fr) minmax(300px,1fr);
+grid-template-rows: 1fr;
+grid-auto-flow: dense;/*para que llenen los espacios*/
+margin: auto;
+gap:10px;
+padding:10px;
+grid-template-areas: 
+"nav main aside"
+;
+}
+
+.grid{
+    max-width: 1200px;
+    margin: auto;
+}
+/*aqui aplico lad propiedasde que defini anteriormente en el template "header header header" y demas y como podemos ver el header esta ocupando los 3 espacios(ojo, esto se elimina luego sacamos el header y el footer del grid)*/
+header{
+    background-color: #18e;
+    width: 100%;
+    padding: 30px;
+    text-align: center;
+    color: white;
+    letter-spacing: 2.6px;
+}
+nav{
+    grid-area: nav;
+}
+main{
+    grid-area: main;
+    min-width: 700px;
+    max-width: 800px;
+}
+aside{
+    grid-area: aside;
+}
+footer{
+    background-color: #000;
+    color: white;
+    width: 100%;
+    padding: 50px;
+    text-align: center;
+    font-weight: bolder;
+    letter-spacing: 2px;
+}
+
+nav,aside{
+    position: sticky;
+    top: 0;
+    height: 150vh;
+}
+h4{
+    color: #00df81;
+}
+
+a{
+
+        text-decoration: none; /* Elimina el subrayado por defecto */
+        color: #18e; /* Color del enlace */
+        position: relative; /* Necesario para el subrayado animado */
+        transition: color 0.3s; /* Suaviza el cambio de color */
+        margin-top: 20px;
+    }
+    
+    a::before {
+        content: ''; /* Crea un pseudo-elemento */
+        position: absolute; /* Posición absoluta para el subrayado */
+        left: 0;
+        bottom: -2px; /* Posiciona el subrayado justo debajo del texto */
+        width: 100%;
+        height: 2px; /* Grosor del subrayado */
+        background-color: #18e; /* Color del subrayado */
+        transform: scaleX(0); /* Inicialmente, el subrayado está escondido */
+        transition: transform 0.3s; /* Suaviza la aparición del subrayado */
+    }
+    
+    a:hover {
+        color: #00df81; /* Color del texto en hover */
+    }
+    
+    a:hover::before {
+        transform: scaleX(1); /* Muestra el subrayado al pasar el cursor */
+    }
+
+.border-link{
+    border: #000 solid 1px;
+    padding: 10px;
+    position: sticky;
+    top: 0;
+}
+
+
+
+@media screen and (max-width: 800px) {
+    .grid{
+        grid-template-columns: minmax(200px,1fr) minmax(700px,1fr);
+    }
+    nav,aside{
+        height: auto;
+        position: static;
+    }
+    aside{
+        display: none;
+    }
+}
+@media screen and (max-width: 580px) {
+    .grid{
+        grid-template-columns: 1fr;
+        grid-template-areas: 
+        "nav" 
+        "main" 
+        "aside";
+    }
+
+}
